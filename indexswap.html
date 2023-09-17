@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <style type="text/css">
+        @font-face {
+            font-family: 'Kanit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/kanit/v12/nKKZ-Go6G5tXcraBGwCKd6xBDFs.woff2) format('woff2');
+            unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC;
+        }
+
+        @font-face {
+            font-family: 'Kanit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/kanit/v12/nKKZ-Go6G5tXcraaGwCKd6xBDFs.woff2) format('woff2');
+            unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+        }
+
+        @font-face {
+            font-family: 'Kanit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/kanit/v12/nKKZ-Go6G5tXcrabGwCKd6xBDFs.woff2) format('woff2');
+            unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'Kanit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/kanit/v12/nKKZ-Go6G5tXcraVGwCKd6xB.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+
+    <meta name="fragment" content="”!”">
+    <meta name="robots" content="index,follow">
+
+    <title>DORKS</title>
+    <meta name="description"
+        content="DORKS Swap - Trade DORKS and unlimited ERC20 tokens with DORKS Swap, earn rewards from staking pools, access new tokens and explore more unique features; Perpetual trades &amp; DORKS AI bot.">
+    <meta name="keywords" content="DORKSswap, cross-chain swap, swap, perpetual, earn, trade">
+    <meta name="audience" content="all">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="DORKS">
+    <meta property="og:title" content="DORKS Swap - Decentralized crypto market">
+   <meta property="og:description"
+        content="DORKS Swap - Trade DORKS and unlimited ERC20 tokens with DORKS Swap, earn rewards from staking pools, access new tokens and explore more unique features; Perpetual trades &amp; DORKS AI bot.">
+
+    <!-- <link rel="icon" href="./assets/favicon/favicon.ico" /> -->
+    <link rel="icon" type="image/x-icon" href="./logofav.png">
+    <link rel="mask-icon" href="./logofav.png" color="#4aa956">
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#1e1e1e">
+
+    <meta name="msapplication-tileimage" content="./logofav.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" href="./logofav.png">
+
+    <script src="/assets/js/numeral.min.js"></script>
+    <script src="/assets/js/bignumber.min.js"></script>
+    <script src="/assets/js/web3-providers-http.min.js"></script>
+    <script src="/assets/js/web3-utils.min.js"></script>
+    <script src="/assets/js/web3.min.js"></script>
+    <style>
+        @import"https://fonts.googleapis.com/css2?family=Manrope:wght@500;800&display=swap";
+
+        html {
+            line-height: 1.15;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%
+        }
+
+        body {
+            margin: 0
+        }
+
+        img {
+            border-style: none
+        }
+
+        html {
+            height: 100%;
+            font-size: 16px
+        }
+      
+    .profile-container { 
+    border:0px 0px 23px 3px #00ffff;
+    }
+
+        body {
+            font: var(--tui-font-text-s);
+            color: var(--tui-text-01);
+            height: 100%;
+            min-height: 100%;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+        .rubic-menu__mobile a:nth-child(2){
+            display: none !important;
+        }
+        html,
+        body {
+            -webkit-overflow-scrolling: touch
+        }
+
+        html {
+            scrollbar-width: none;
+            -ms-overflow-style: none
+        }
+
+        html::-webkit-scrollbar,
+        html::-webkit-scrollbar-thumb {
+            background: transparent;
+            width: 0;
+            height: 0
+        }
+        .stakebut {
+        display: none;
+        }
+        .footer ul {
+    display: flex;
+    justify-content: center;
+}
+
+        :root {
+            --tui-heading-font: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+            --tui-text-font: "Manrope", -apple-system, "BlinkMacSystemFont", system-ui, "Roboto", "Segoe UI", "Helvetica Neue", sans-serif;
+            --tui-font-heading: var(--tui-heading-font);
+            --tui-font-heading-1: bold 3.125rem/3.5rem var(--tui-font-heading);
+            --tui-font-heading-2: bold 2.75rem/3rem var(--tui-font-heading);
+            --tui-font-heading-3: bold 2.25rem/2.5rem var(--tui-font-heading);
+            --tui-font-heading-4: bold 1.75rem/2rem var(--tui-font-heading);
+            --tui-font-heading-5: bold 1.5rem/1.75rem var(--tui-font-heading);
+            --tui-font-heading-6: bold 1.25rem/1.5rem var(--tui-font-heading);
+            --tui-font-text: var(--tui-text-font);
+            --tui-font-text-xl: normal 1.1875rem/1.75rem var(--tui-font-text);
+            --tui-font-text-l: normal 1.0625rem/1.5rem var(--tui-font-text);
+            --tui-font-text-m: normal .9375rem/1.5rem var(--tui-font-text);
+            --tui-font-text-s: normal .8125rem/1.25rem var(--tui-font-text);
+            --tui-font-text-xs: normal .6875rem/1rem var(--tui-font-text);
+            --tui-radius-xs: .25rem;
+            --tui-radius-s: .5rem;
+            --tui-radius-m: .625rem;
+            --tui-radius-l: .625rem;
+            --tui-height-xs: 1.5rem;
+            --tui-height-s: 2rem;
+            --tui-height-m: 2.75rem;
+            --tui-height-l: 3.5rem;
+            --tui-padding-s: .75rem;
+            --tui-padding-m: .75rem;
+            --tui-padding-l: 1rem;
+            --tui-duration: .3s;
+            --tui-disabled-opacity: .56;
+            --tui-autofill: #fff5c0;
+            --tui-base-01: #fff;
+            --tui-base-02: #f6f6f6;
+            --tui-base-03: #ededed;
+            --tui-base-04: #d7d7d7;
+            --tui-base-05: #b0b0b0;
+            --tui-base-06: #959595;
+            --tui-base-07: #808080;
+            --tui-base-08: #333;
+            --tui-base-09: #000;
+            --tui-primary: #526ed3;
+            --tui-primary-hover: #6c86e2;
+            --tui-primary-active: #314692;
+            --tui-primary-text: #fff;
+            --tui-secondary: #ebefff;
+            --tui-secondary-hover: #dfe3f3;
+            --tui-secondary-active: #d8ddf2;
+            --tui-accent: #ff7043;
+            --tui-accent-hover: #ff9a94;
+            --tui-accent-active: #e7716a;
+            --tui-accent-text: #fff;
+            --tui-selection: rgba(112, 182, 246, .12);
+            --tui-focus: rgba(51, 51, 51, .64);
+            --tui-clear: rgba(0, 0, 0, .08);
+            --tui-clear-disabled: rgba(0, 0, 0, .04);
+            --tui-clear-hover: rgba(0, 0, 0, .16);
+            --tui-clear-active: rgba(0, 0, 0, .2);
+            --tui-clear-inverse: rgba(255, 255, 255, .16);
+            --tui-clear-inverse-hover: rgba(255, 255, 255, .24);
+            --tui-clear-inverse-active: rgba(255, 255, 255, .4);
+            --tui-elevation-01: #fff;
+            --tui-elevation-02: #fff;
+            --tui-error-fill: #f45725;
+            --tui-error-bg: rgba(244, 87, 37, .12);
+            --tui-error-bg-hover: rgba(244, 87, 37, .24);
+            --tui-success-fill: #4ac99b;
+            --tui-success-bg: rgba(74, 201, 155, .12);
+            --tui-success-bg-hover: rgba(74, 201, 155, .24);
+            --tui-warning-fill: #ffc700;
+            --tui-warning-bg: rgba(255, 199, 0, .12);
+            --tui-warning-bg-hover: rgba(255, 199, 0, .24);
+            --tui-info-fill: #70b6f6;
+            --tui-info-bg: rgba(112, 182, 246, .12);
+            --tui-info-bg-hover: rgba(112, 182, 246, .24);
+            --tui-neutral-fill: #79818c;
+            --tui-neutral-bg: rgba(121, 129, 140, .12);
+            --tui-neutral-bg-hover: rgba(121, 129, 140, .24);
+            --tui-text-01: #1b1f3b;
+            --tui-text-02: rgba(27, 31, 59, .65);
+            --tui-text-03: rgba(27, 31, 59, .4);
+            --tui-link: #526ed3;
+            --tui-link-hover: #6c86e2;
+            --tui-positive: #3aa981;
+            --tui-positive-hover: #7ac5aa;
+            --tui-negative: #dd4c1e;
+            --tui-negative-hover: #e38163;
+            --tui-error-fill-night: #ff8c67;
+            --tui-error-bg-night: rgba(244, 87, 37, .32);
+            --tui-error-bg-night-hover: rgba(244, 87, 37, .4);
+            --tui-success-fill-night: #4ac99b;
+            --tui-success-bg-night: rgba(74, 201, 155, .32);
+            --tui-success-bg-night-hover: rgba(74, 201, 155, .4);
+            --tui-warning-fill-night: #ffc700;
+            --tui-warning-bg-night: rgba(255, 199, 0, .32);
+            --tui-warning-bg-night-hover: rgba(255, 199, 0, .4);
+            --tui-info-fill-night: #70b6f6;
+            --tui-info-bg-night: rgba(112, 182, 246, .32);
+            --tui-info-bg-night-hover: rgba(112, 182, 246, .4);
+            --tui-neutral-fill-night: #959ba4;
+            --tui-neutral-bg-night: rgba(149, 155, 164, .32);
+            --tui-neutral-bg-night-hover: rgba(149, 155, 164, .48);
+            --tui-autofill-night: #554a2a;
+            --tui-text-01-night: #ffffff;
+            --tui-text-02-night: rgba(255, 255, 255, .72);
+            --tui-text-03-night: rgba(255, 255, 255, .6);
+            --tui-link-night: #6788ff;
+            --tui-link-night-hover: #526ed3;
+            --tui-positive-night: #44c596;
+            --tui-positive-night-hover: #3aa981;
+            --tui-negative-night: #ff8c67;
+            --tui-negative-night-hover: #bb593a;
+            --tui-support-01: #a8cef1;
+            --tui-support-02: #3682db;
+            --tui-support-03: #8dda71;
+            --tui-support-04: #34b41f;
+            --tui-support-05: #e29398;
+            --tui-support-06: #b8474e;
+            --tui-support-07: #fcc068;
+            --tui-support-08: #ff8a00;
+            --tui-support-09: #dab3f9;
+            --tui-support-10: #7b439e;
+            --tui-support-11: #fee797;
+            --tui-support-12: #fcbb14;
+            --tui-support-13: #ea97c4;
+            --tui-support-14: #bd65a4;
+            --tui-support-15: #7fd7cc;
+            --tui-support-16: #2fad96;
+            --tui-support-17: #d4aca2;
+            --tui-support-18: #9d6f64;
+            --tui-support-19: #d2e9a2;
+            --tui-support-20: #aadc42;
+            --tui-support-21: #a0c5df;
+            --tui-support-22: #3c7ba8
+        }
+
+        @charset "UTF-8";
+
+        :root {
+            --scroll-size: 0px;
+            --primary-color: #00e6ff;
+            --secondary-color: #271e34;
+            --filter-inversion: invert(1);
+            --accent-color: #ffe900;
+            --transparent-line: rgba(0, 0, 0, .1);
+            --primary-background: rgb(246, 246, 246);
+            --form-background: rgb(255, 255, 255);
+            --form-background-transparent: rgba(255, 255, 255, .9);
+            --solid-background: rgb(255, 255, 255);
+            --secondary-background: rgba(0, 0, 0, .035);
+            --iframe-primary-background: rgb(244, 244, 244);
+            --primary-text: rgb(0, 0, 0);
+            --primary-text-invert: rgb(255, 255, 255);
+            --secondary-text: rgba(0, 0, 0, .5);
+            --tui-primary: #00e6ff;
+            --tui-primary-hover: #70ff05;
+            --tui-primary-active: #70ff05;
+            --tui-primary-text: var(--primary-text-invert);
+            --tui-secondary: rgba(255, 255, 255, 1);
+            --tui-secondary-hover: rgba(255, 255, 255, .5);
+            --tui-secondary-active: rgba(255, 255, 255, .5);
+            --tui-secondary-text: var(--primary-text);
+            --tui-link: var(--primary-text);
+            --tui-link-hover: var(--primary-text);
+            --tui-text-02: #3b3a3a;
+            --tui-text-03: var(--tui-text-02);
+            --selection-color: rgb(243 249 243);
+            --error-color: #e9590c;
+            --warning-color: #f2994a
+        }
+
+        html.dark {
+            --transparent-line: rgba(255, 255, 255, .1);
+            --filter-inversion: invert(0);
+            --primary-background: #000000;
+            --form-background: rgb(0 22 94);
+            --form-background-transparent: rgba(38, 40, 42, .9);
+            --solid-background: rgb(0, 0, 0);
+            --secondary-background: rgba(255, 255, 255, .1);
+            --iframe-primary-background: rgb(44, 44, 44);
+            --primary-text: rgb(255, 255, 255);
+            --primary-text-invert: rgb(0, 0, 0);
+            --secondary-text: rgba(255, 255, 255, .65);
+            --tui-secondary: rgba(255, 255, 255, .1);
+            --tui-secondary-hover: rgba(255, 255, 255, .05);
+            --tui-secondary-active: rgba(255, 255, 255, .05);
+            --tui-base-01: #181a19;
+            --tui-base-02: init;
+            --tui-text-01: var(--primary-text);
+            --tui-text-02: var(--secondary-text);
+            --selection-color: rgba(255, 255, 255, .05)
+        }
+
+        html.dark body {
+            background: var(--primary-background)
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+            -webkit-tap-highlight-color: transparent
+        }
+
+        *:focus {
+            outline: none
+        }
+
+        html {
+            --tui-font-text: Kanit, sans-serif !important;
+            box-sizing: border-box;
+            height: auto !important;
+            overflow-x: hidden
+        }
+
+        html body {
+            position: relative;
+            min-width: 320px;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: var(--primary-background)
+        }
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 2147483001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #181a19;
+            opacity: 1;
+            transition: opacity .4s ease-in-out, z-index .4s step-end
+        }
+
+        #loader img {
+            animation: 1.4s infinite 1s loader-icon-fadein
+        }
+
+        @keyframes loader-icon-fadein {
+            0% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .3
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+
+
+<style>
+
+    a.selected {
+      background-color:#1F75CC;
+      color:white;
+      z-index:100;
+    }
+    
+    .messagepop {
+      background-color: #00165e;
+    /* border: 1px solid #999999; */
+    cursor: default;
+    display: none;
+    margin-top: 15px;
+    position: absolute;
+    text-align: left;
+  
+    width: 664px;
+
+    z-index: 50;
+    padding: 24px 25px 32px;
+    /* color: #000; */
+    box-shadow: -3px 0px 12px 1px rgb(0 238 255);
+    -webkit-box-shadow: -3px 0px 12px 1px rgb(0 176 255);
+    -moz-box-shadow: -3px 0px 12px 1px rgb(0 255 72);
+    border-radius: 10px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 5%;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 3px;
+      padding-left: 15px;
+      text-indent: -15px;
+    }
+    
+ 
+  
+    p#demo {
+        font-size: 20px;
+   
+    }
+    a.close {
+    background: #00e6ff;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 24px;
+    font-size: 11px;
+    color: #000;
+}
+ul {
+    list-style: none !important;
+}
+.rubic-header__nav{
+    position: absolute;
+    left: 45%;
+    gap: 10px;
+    width: 406px ; 
+}
+ 
+button.tui-space_left-6.tui-space_right-1.ng-star-inserted span.content {
+    background: url("./assets/images/left.png") !important;
+}
+.stakebut {
+    right: 0;
+    height: auto;
+    text-align: right;
+    max-width: 554px;
+    margin-bottom: -50px;
+    margin-top: 33px;
+    margin: 0 auto;  
+    transform: translate(2%);
+    position: relative;
+    z-index: 1;
+}
+tui-dialog.ng-tns-c85-11.ng-trigger.ng-trigger-tuiSlideInTop.ng-star-inserted {
+    margin-top: 105px;
+}
+ 
+.cdk-virtual-scroll-content-wrapper li.asset-types-aside__fiats {
+    display: none;
+}
+.cdk-virtual-scroll-content-wrapper li.asset-types-aside__fiats:nth-child(3),
+.cdk-virtual-scroll-content-wrapper li.asset-types-aside__fiats:nth-child(2){
+    display: block;
+}
+.settings-list .settings-list__item:nth-child(1) {
+display: none !important;
+}
+ 
+.settings-list .settings-list__item:nth-child(2) {
+    display: none !important;
+}
+.stakebut a.selected {
+    background: #69696942;
+}
+
+.stakebut a {
+    position: absolute;
+    top: 46px;
+    right: 58px;
+    padding: 9px 34px;
+    border-radius: 9px;
+    color: #fff !important;
+    z-index: 0;
+}
+body {
+    background: url(back.jpg) !important;
+    background-size: cover !important;
+}
+span.livar {
+    color: #00e6ff;
+}
+header.rubic-header a img {
+       width: 145px;
+    margin-left: 77px;
+}
+.hidecos{
+display: none;
+}
+.footer img {
+    width: 59px;
+}
+.footer img {
+    width: 30px;
+    margin: 9px;
+}
+.footer {
+    padding: 0 17px;
+    text-align: center;
+    margin-top: -70px;
+    position: relative;
+    z-index: 11;
+
+}
+table.table tbody {
+    background: #0000007a;
+}
+.footer ul {
+    position: absolute;
+    right: 11%;
+    bottom: -83%;
+}
+    a#contact {
+        /* color: #fff; */
+        text-decoration: none; 
+        color: #fff;
+        font-size: 14px;
+    }
+    a.button-link.hidemenu {
+    display: none;
+}
+
+@media (max-width: 1140px){
+    
+    .rubic-header {
+    padding: 13px 20px 13px !important;
+    }
+    .stakebut a {
+    top: 30px;
+    right: 0;
+    background: none;
+    color: #fff !important;
+    left: 0;
+    max-width: 100px;
+    margin: 0 auto;
+    border: 1px solid #00e6ff;
+    }
+}
+@media (max-width: 767px){
+    
+    .stakebut a { 
+        top: 13px;
+    padding: 7px 34px;
+    }
+    .messagepop{
+        margin: 20px;
+        width: 92%;
+    }
+    .footer {
+    text-align: left;
+    }
+    section.assets-selector {
+    margin-top: 53px !important;
+    }
+    header.rubic-header a img {
+       width: 150px !important;
+    margin-left: 0px;
+    }
+    
+}
+nav.rubic-header__nav.ng-star-inserted {
+    display: none;
+}
+
+        </style>
+
+<style>  
+    body {  
+     font: 14px/18px 'Montserrat', sans-serif;  
+   }  
+   a {  
+     text-decoration: none;  
+   }  
+   :after {  
+       -webkit-box-sizing: border-box;  
+       -moz-box-sizing: border-box;  
+       box-sizing: border-box;  
+   }  
+   .pad-15 {  
+     padding: 15px;  
+   }  
+   :before {  
+       -webkit-box-sizing: border-box;  
+       -moz-box-sizing: border-box;  
+       box-sizing: border-box;  
+   }  
+   .clear {  
+     clear: both;   
+   }  
+   .clear:after {   
+       content: " ";  
+      display: table;  
+   }  
+   clear:before {   
+       content: " ";  
+      display: table;  
+   }  
+   .header {  
+     min-height: 55px;  
+     background: #273135;  
+     border-bottom: 1px solid #273135;  
+   }  
+   a.toggle-nav {  
+    top: 28px;
+    right: -55px;
+    position: absolute;
+    color: #fff;
+    line-height: 25px;
+    font-size: 22px;
+    background: #1a3d8b;
+    padding: 12px 13px;
+    border-radius: 1px;
+    transform: rotate(90deg);
+    border-radius: 10px;
+   }  
+   .header > .left-head {  
+     width: 250px;  
+     display: block;  
+     background:#20282B;  
+     position: relative;  
+   }  
+   .header > .left-head .logo {  
+     padding:10px 0px 10px 15px;  
+    }  
+   .nice-nav {  
+    width: 190px;
+    background: #1643a3;
+    height: 100%;
+    transition: all 0.4s ease-in-out 0s;
+    float: left;
+    z-index: 11;
+    position: relative;
+    height: 100vh;
+    border-left: 5px solid #001960;
+    background: rgb(17,22,41);
+    background: linear-gradient(95deg, rgba(17,22,41,1) 0%, rgb(10 93 213) 84%, rgb(0 255 255) 90%);
+   }  
+   .nice-nav.open {  
+       margin-left: -190px;  
+       display: block;  
+   }  
+   .nice-nav > .user-info {  
+       padding: 10px 15px;  
+       color: #fff;   
+       min-height: 41px;  
+   }  
+   .user-info > .user-name h5 {  
+     text-transform: uppercase;  
+     font-size: 16px;  
+   }  
+   .user-info > .user-name span {  
+     font-size: 80%;  
+     color: #555;  
+     font-style: italic;  
+   }  
+   .nice-nav li.child-menu span.toggle-right {  
+     text-align: right;  
+     float: right;  
+     display: inline-block;  
+     position: absolute;  
+     right: 0;  
+     padding: 15px;  
+     top: 0;  
+     background: #DE5939;  
+     bottom: 0;  
+   }  
+   .nice-nav ul li a {  
+     padding: 12px;  
+   
+     display: block;  
+     color: #fff;  
+     position: relative;  
+     
+    text-decoration: none !important; 
+   }  
+   .nice-nav ul li.child-menu ul {  
+     background: #aaa;  
+     display: none;  
+   }  
+   .nice-nav ul li.child-menu ul li a {  
+     background: #273135;  
+     padding: 10px 20px;  
+   }
+   .nice-nav ul li a svg {
+    fill: #00bbe5;
+    width: 18px;
+    height: 16px;
+    vertical-align: text-top;
+    margin-right: 10px;
+  }
+ 
+
+
+
+
+   @media (min-width: 767px){
+    a.rubic-header__logo.ng-star-inserted {
+    display: none;
+    }
+    .footlinks{
+      display: none;
+    }
+   }
+   @media (max-width: 1140px){
+    .nice-nav {
+    display: none;
+    }
+   }
+
+   </style>  
+    <link rel="stylesheet" href="styles.7b3499132a075799.css" media="print" onload="this.media='all'"><noscript>
+        <link rel="stylesheet" href="styles.7b3499132a075799.css"></noscript>
+</head>
+
+<body>
+   
+    <div class="messagepop pop">
+
+      <img src="logowide.png" style="
+      width: 147px;
+  ">
+        <h2>EARN & STAKE $DORKS <span class="livar">LIVE COUNTDOWN</span></h2>
+         
+        <p id="demo"></p>
+
+
+        <img src="swap.jpg" style="
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+    ">
+        <a class="close" href="/">CLOSE</a>
+    
+        <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("september 11, 2023 15:00:00").getTime();
+        
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+        
+          // Get today's date and time
+          var now = new Date().getTime();
+            
+          // Find the distance between now and the count down date
+          var distance = countDownDate - now;
+            
+          // Time calculations for days, hours, minutes and seconds
+          var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+          // Output the result in an element with id="demo"
+          document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+          + minutes + "m " + seconds + "s ";
+            
+          // If the count down is over, write some text 
+          if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+          }
+        }, 1000);
+        </script>
+    </div>
+    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    
+    <script>
+    
+    
+    
+    function deselect(e) {
+      $('.pop').slideFadeToggle(function() {
+        e.removeClass('selected');
+      });    
+    }
+    
+    $(function() {
+      $('#contact').on('click', function() {
+        if($(this).hasClass('selected')) {
+          deselect($(this));               
+        } else {
+          $(this).addClass('selected');
+          $('.pop').slideFadeToggle();
+        }
+        return false;
+      });
+    
+      $('.close').on('click', function() {
+        deselect($('#contact'));
+        return false;
+      });
+    });
+    
+    $.fn.slideFadeToggle = function(easing, callback) {
+      return this.animate({ opacity: 'toggle', height: 'toggle' }, 'fast', easing, callback);
+    };
+    </script>
+
+
+
+ 
+  <div class="nice-nav">  
+    <div class="user-info clear">  
+      <div class="user-name ">  
+        <h2><img src="logowide.png" style="
+          width: 147px;
+      "> </h2>  
+        <a  class="toggle-nav"> ||| </a>  
+      </div>  
+    </div>  
+    <ul>  
+      <li class="child-menu">  
+        <a href="#"> <span><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M403.8 34.4c12-5 25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V160H352c-10.1 0-19.6 4.7-25.6 12.8L284 229.3 244 176l31.2-41.6C293.3 110.2 321.8 96 352 96h32V64c0-12.9 7.8-24.6 19.8-29.6zM164 282.7L204 336l-31.2 41.6C154.7 401.8 126.2 416 96 416H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c10.1 0 19.6-4.7 25.6-12.8L164 282.7zm274.6 188c-9.2 9.2-22.9 11.9-34.9 6.9s-19.8-16.6-19.8-29.6V416H352c-30.2 0-58.7-14.2-76.8-38.4L121.6 172.8c-6-8.1-15.5-12.8-25.6-12.8H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H96c30.2 0 58.7 14.2 76.8 38.4L326.4 339.2c6 8.1 15.5 12.8 25.6 12.8h32V320c0-12.9 7.8-24.6 19.8-29.6s25.7-2.2 34.9 6.9l64 64c6 6 9.4 14.1 9.4 22.6s-3.4 16.6-9.4 22.6l-64 64z"/></svg> SWAP </span> </a>  
+      </li>  
+      <li class="child-menu">  
+        <a href="/revoke-approval/revoke"> <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg><span>Revoke </span> </a>  
+      </li>  
+      <li class="child-menu">  
+        <a href="/limit-order"> <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm192-96H320c17.7 0 32 14.3 32 32V320c0 17.7-14.3 32-32 32H192c-17.7 0-32-14.3-32-32V192c0-17.7 14.3-32 32-32z"/></svg><span> Limit Order </span> </a>  
+  </li>  
+        <li class="child-menu">  
+        <a href="/contact" id="contact"> <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8V128h-.7l-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48V352h28.2l91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16V352c0 17.7 14.3 32 32 32H64c17.7 0 32-14.3 32-32V128H16zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128V352c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V144c0-8.8-7.2-16-16-16H544zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z"/></svg><span> STAKE</span> </a>  
+      </li>  
+         <li class="child-menu">  
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M384 480h48c11.4 0 21.9-6 27.6-15.9l112-192c5.8-9.9 5.8-22.1 .1-32.1S555.5 224 544 224H144c-11.4 0-21.9 6-27.6 15.9L48 357.1V96c0-8.8 7.2-16 16-16H181.5c4.2 0 8.3 1.7 11.3 4.7l26.5 26.5c21 21 49.5 32.8 79.2 32.8H416c8.8 0 16 7.2 16 16v32h48V160c0-35.3-28.7-64-64-64H298.5c-17 0-33.3-6.7-45.3-18.7L226.7 50.7c-12-12-28.3-18.7-45.3-18.7H64C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H87.7 384z"/></svg> <span> Docs </span> </a>  
+      </li>  
+    </ul>  
+  </div>  
+ 
+  <script>  
+   $(document).ready(function() {  
+     $('.toggle-nav').click(function() {  
+       $this = $(this);  
+       $nav = $('.nice-nav');  
+       $nav.toggleClass('open');  
+     });  
+     $('.body-part').click(function(){  
+       $nav.addClass('open');  
+     });  
+     $submenu = $('.child-menu-ul');  
+     $('.child-menu .toggle-right').on('click', function(e) {  
+       e.preventDefault();  
+       $this = $(this);  
+       $parent = $this.parent().next();  
+       $tar = $('.child-menu-ul');  
+       if (!$parent.hasClass('active')) {  
+         $tar.removeClass('active').slideUp('fast');  
+         $parent.addClass('active').slideDown('fast');  
+       } else {  
+         $parent.removeClass('active').slideUp('fast');  
+       }  
+     });  
+   });  
+  </script>  
+
+
+
+
+<div class="mains">
+
+
+
+    <app-root></app-root>
+
+</div>
+ 
+    <script src="runtime.361ac78d12c01995.js" type="module"></script>
+    <script src="polyfills.00d698eda7bf1f5d.js" type="module"></script>
+    <script src="scripts.5d3f42c06c038cbf.js" defer></script>
+    <script src="main.f28e7b458d4a9021.js" type="module"></script>
+ 
+    <div class="footer">
+      <p>CA: 0x141092653623Eb66AA88714AC019296b4d80Dd66 </p>
+
+<ul>
+        <li><a href="https://t.me/dorksportal" target="_blank"><img src="assets/tel.png"></a></li>
+        <li><a href="https://twitter.com/dorks2023" target="_blank"><img src="assets/twit.png"></a></li>
+        <li><a href="https://www.dextools.io/app/en/ether/pair-explorer/0x621ae17daf39940eedd4330f3e0725c32089aaab" target="_blank"><img src="dex.png"></a></li>
+</ul>
+<p class="footlinks"> 
+<a href="#">DORKS</a></p>
+</div>
+</body>
+
+
+
+
+</html>

@@ -1,0 +1,11 @@
+# Rocketz Accounts
+
+User-agent: *
+Disallow: /not-found
+Disallow: /legal
+Sitemap: https://gemprotocol.io/sitemap.xml
+
+# Google adsbot ignores robots.txt unless specifically named!
+User-agent: adsbot-google
+Disallow: /not-found
+Disallow: /legal
