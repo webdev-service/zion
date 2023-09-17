@@ -1,0 +1,9 @@
+{
+    "TOKENS_TO_PREMIUM": 300000000000,
+    "DECIMALS": 18,
+    "PORTFOLIO": true,
+    "RUG_CHECKER": true,
+    "SWAP": true,
+    "WATCHLIST": true,
+    "MULTICHART": true
+  }
